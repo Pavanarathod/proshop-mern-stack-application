@@ -10,7 +10,7 @@ function App() {
       <Header />
       <main className="container">
         <Route path="/" component={Homepage} exact />
-        <Route path="/product/:id" component={ProductPage} />
+        <Route path="/product/:_id" component={ProductPage} />
       </main>
     </BrowserRouter>
   );

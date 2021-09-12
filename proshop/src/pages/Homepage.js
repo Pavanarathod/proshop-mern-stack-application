@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import Product from "../components/Product";
-import products from "../utils/products";
+import axios from "axios";
 
 const Homepage = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const { data } = await axios.get("/api/products");
+      setProducts(data);
+    };
+
+    getProducts();
+  }, []);
   return (
     <>
       <h1>Latest Products</h1>

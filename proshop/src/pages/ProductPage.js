@@ -1,8 +1,20 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import products from "../utils/products";
 
 const ProductPage = ({ match }) => {
-  const product = products.find((product) => product._id === match.params.id);
+  const { _id } = match.params;
+  // const product = products.find((product) => product._id === match.params.id);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const { data } = await axios.get(`/api/products/${_id}`);
+      setProduct(data);
+    };
+
+    getProducts();
+  }, [_id]);
 
   return (
     <>
@@ -19,6 +31,8 @@ const ProductPage = ({ match }) => {
           <p>{product.description}</p>
         </div>
         <div>
+          <h1>{product.price}</h1>
+          <p>{product.countInStock > 0 ? "In Stock" : "Out of Stock"}</p>
           <button>Add To cart</button>
         </div>
       </div>
