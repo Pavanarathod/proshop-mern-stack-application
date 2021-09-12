@@ -3,3 +3,53 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 20px;
+  background-color: black;
+  color: white;
+}
+
+.heaer__right {
+  display: flex;
+  align-items: center;
+}
+
+.heaer__right > h3 {
+  margin-right: 10px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 15px;
+}
+
+.cart__image {
+  height: 200px;
+  width: 100%;
+}
+
+.product {
+  border: 1px solid lightgrey;
+  background: whitesmoke;
+}
+
+.product * {
+  text-decoration: none;
+}
+
+.prodcut__detail__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
