@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const productDetailSlice = createSlice({
   name: "productInfo",
   initialState: {
-    product: null,
+    product: {
+      reviews: [],
+    },
     loading: false,
     error: null,
   },

@@ -7,7 +7,7 @@ export const fetchProducts = createAsyncThunk(
     try {
       const productsDataList = axios.get("/api/products");
       const { data } = await productsDataList;
-      console.log(data);
+
       return data;
     } catch (error) {
       throw new Error(error.message);
@@ -58,7 +58,6 @@ export const gettingAllProducts = () => async (dispatch) => {
     dispatch(setLoading());
 
     const { data } = await axios.get("/api/products");
-    console.log(data);
 
     dispatch(getProducts(data));
   } catch (error) {
