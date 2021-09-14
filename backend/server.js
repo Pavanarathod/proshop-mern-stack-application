@@ -3,14 +3,17 @@ import products from "./data/products.js";
 import dotenv from "dotenv";
 import colors from "colors";
 import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 import connectDB from "./db/mongoose.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 dotenv.config();
 connectDB();
 const app = express();
+app.use(express.json());
 
 app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
