@@ -53,3 +53,22 @@
   grid-template-columns: repeat(3, 1fr);
   padding: 10px;
 }
+
+.cart {
+  display: flex;
+
+  justify-content: space-between;
+}
+.cart__grid {
+  flex: 1;
+}
+
+.cartItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cartImage {
+  height: 100px;
+}
