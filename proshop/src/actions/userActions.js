@@ -2,23 +2,21 @@ import { userActions } from "../features/userSlice";
 import axios from "axios";
 import { registerAction } from "../features/registerSlice";
 import { prfileActions } from "../features/profileSlice";
+import { updateActions } from "../features/updateProfileSlice";
 
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch(userActions.setLoading());
-
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-
     const { data } = await axios.post(
       "/api/users/login",
       { email, password },
       config
     );
-
     dispatch(userActions.login(data));
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
@@ -75,7 +73,6 @@ export const userProfile = (id) => async (dispatch, getState) => {
     const {
       user: { userInfo },
     } = getState();
-    console.log(userInfo);
 
     const config = {
       headers: {
@@ -90,6 +87,36 @@ export const userProfile = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch(
       prfileActions.setError({
+        error:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    );
+  }
+};
+
+export const updateUserProfile = (user) => async (dispatch, getState) => {
+  try {
+    dispatch(updateActions.setLoading());
+
+    const {
+      user: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put(`/api/users/profile`, user, config);
+
+    dispatch(updateActions.setUserProfile(data));
+  } catch (error) {
+    dispatch(
+      updateActions.setError({
         error:
           error.response && error.response.data.message
             ? error.response.data.message
