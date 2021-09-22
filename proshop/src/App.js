@@ -7,12 +7,14 @@ import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
 import Register from "./pages/Register";
 import ProfilePage from "./pages/ProfilePage";
+import ShippingPage from "./pages/ShippingPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <main className="container">
+        <Route path="/shipping" component={ShippingPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={Register} />
         <Route path="/profile" component={ProfilePage} />

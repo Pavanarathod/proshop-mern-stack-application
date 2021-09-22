@@ -7,10 +7,9 @@ const CartPage = ({ match, location, history }) => {
   const { _id } = match.params;
   const cartItems = useSelector((state) => state.cart.cartItems);
   const products = useSelector((state) => state.cart.cartItems);
-  console.log(products);
+
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
-  console.log(cartItems);
 
   useEffect(() => {
     if (_id) {
@@ -23,7 +22,7 @@ const CartPage = ({ match, location, history }) => {
   };
 
   const checkout = () => {
-    history.push("/login?redirect=shippping");
+    history.push("/login?redirect=shipping");
   };
 
   return (
