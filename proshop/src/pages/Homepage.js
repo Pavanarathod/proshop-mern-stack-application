@@ -6,7 +6,6 @@ import { gettingAllProducts } from "../features/productSlice";
 const Homepage = () => {
   const dispatch = useDispatch();
   const productData = useSelector((state) => state.products);
-  console.log(productData);
   const { error, loading, products } = productData;
 
   useEffect(() => {

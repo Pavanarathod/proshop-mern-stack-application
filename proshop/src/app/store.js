@@ -7,6 +7,8 @@ import userReducer from "../features/userSlice";
 import registerReducer from "../features/registerSlice";
 import ProfileReducer from "../features/profileSlice";
 import updateProfileReducer from "../features/updateProfileSlice";
+import createOrderReducer from "../features/orderSlice";
+import orderDetailReducer from "../features/orderDetailSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +20,7 @@ export const store = configureStore({
     register: registerReducer,
     profile: ProfileReducer,
     updateProfile: updateProfileReducer,
+    orders: createOrderReducer,
+    orderDetails: orderDetailReducer,
   },
 });
